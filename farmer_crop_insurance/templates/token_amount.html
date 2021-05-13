@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block content %}
+<title>Rewarding criteria</title>
+<div class="btn-group">
+        <form action="/logout" method="POST">
+  <input type="submit" value="Logout">
+</form>
+<form action="/home_admin">
+  <input type="submit" value="Home">
+</form>
+</div>
+<h1>Farmer crop recovery</h1>
+<h2>Rewarding criteria definition</h2>
+<p>You can define the rewarding for each condition of the crop and modify it in function of the current ALGO/EUR rate</p>
+<a href="https://coinmarketcap.com/currencies/algorand/">Click here to see the current ALGO/EUR rate</a>
+<br><br>
+<form action="/token_amount" method="POST">
+    <label for="id_agri_drought"><b>Reward for agricultural drought</b></label>
+    <input type="number" placeholder="Enter token amount" name="agri_drought" id="id_agri_drought" required>
+    <p>Actual amount: {{ actual_amount.agri_drought }}</p>
+
+    <br>
+
+    <label for="id_meteo_drought"><b>Reward for meteorological drought</b></label>
+    <input type="number" placeholder="Enter token amount" name="meteo_drought" id="id_meteo_drought" required>
+    <p>Actual amount: {{ actual_amount.meteo_drought }}</p>
+
+    <br>
+
+    <label for="id_heavy_rain"><b>Reward for heavy rain</b></label>
+    <input type="number" placeholder="Enter token amount" name="heavy_rain" id="id_heavy_rain" required>
+    <p>Actual amount: {{ actual_amount.heavy_rain }}</p>
+
+    <br>
+
+    <label for="id_shower_rain"><b>Reward for shower rain</b></label>
+    <input type="number" placeholder="Enter token amount" name="shower_rain" id="id_shower_rain" required>
+    <p>Actual amount: {{ actual_amount.shower_rain }}</p>
+
+    <br>
+
+    <label for="id_storm_rain"><b>Reward for storm rain</b></label>
+    <input type="number" placeholder="Enter token amount" name="storm_rain" id="id_storm_rain" required>
+    <p>Actual amount: {{ actual_amount.storm_rain }}</p>
+
+    <br>
+
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

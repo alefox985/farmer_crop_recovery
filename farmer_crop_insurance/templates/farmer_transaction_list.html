@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block content %}
+<title>Transaction list</title>
+<div class="btn-group">
+        <form action="/logout" method="POST">
+  <input type="submit" value="Logout">
+</form>
+<form action="/home_farmer">
+  <input type="submit" value="Home">
+</form>
+</div>
+<h1>Farmer crop recovery</h1>
+<h2>Here is your transaction history</h2>
+{% for tx in transaction_list %}
+<p><b>Transaction number:</b> {{ tx.id }}</p>
+<p><b>Farmer username:</b> {{ tx.username }}</p>
+<p><b>Farmer ID:</b> {{ tx.user_id }}</p>
+<p><b>Farmer blockchain address:</b> {{ tx.address }}</p>
+<p><b>Amount of token:</b> {{ tx.amount }}</p>
+{% if tx.status == 'Accepted' %}
+<p><b>UTC time of the transaction:</b> {{ tx.time }}</p>
+<p><b>Transaction ID:</b> {{ tx.tx_id }}</p>
+{% endif %}
+<p><b>Status:</b> {{ tx.status }}</p>
+<p><b>Class:</b> {{ tx.type }}</p>
+<input type="submit" name="show_hide" id="show_hide" value="Hide/Show details">
+<table class="tblcls">
+  <tr>
+      <th>User ID</th>
+      <th>Time</th>
+      <th>Temperature</th>
+      <th>Humidity</th>
+      <th>Rain mm</th>
+  </tr>
+    {% for data in transaction_data %}
+    {% if data.tx_id == tx.id %}
+  <tr>
+      <td>{{ data.user_id }}</td>
+      <td>{{ data.time }}</td>
+      <td>{{ data.temperature }}</td>
+      <td>{{ data.humidity }}</td>
+      <td>{{ data.rain_mm }}</td>
+  </tr>
+    {% endif %}
+    {% endfor %}
+</table>
+{% endfor %}
+{% endblock %}

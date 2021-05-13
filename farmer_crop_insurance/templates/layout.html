@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+   $(document).ready(function() {
+     $("#id_show_hide_admin").click(function () {
+    $(".tblcls_admin").toggle(2000)
+  });
+  });
+   </script>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+  button, input[type=submit] {
+  background-color: green;
+  color: white;
+  padding: 12px 24px;
+  margin: 4px 2px;
+  border: none;
+  cursor: pointer;
+}
+input[type=text], input[type=password], input[type=number] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.tblcls_admin{
+    border-collapse: collapse;
+    border: 2px solid green;
+    width: 75%;
+  }
+.tblcls_admin th{
+    border: 1px green;
+    color: white;
+    background: green;
+  }
+.tblcls_admin td{
+    padding:10px;
+    border: 1px dotted green;
+    color: black;
+    background: white;
+  }
+
+#id_show_hide_admin{
+   margin: 30px 5px;
+}
+</style>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+
+   $(document).ready(function() {
+     $("#show_hide").click(function () {
+    $(".tblcls").toggle(2000)
+  });
+  });
+
+   </script>
+
+<style>
+.tblcls{
+    border-collapse: collapse;
+    border: 2px solid green;
+    width: 75%;
+  }
+.tblcls th{
+    border: 1px green;
+    color: white;
+    background: green;
+  }
+.tblcls td{
+    padding:10px;
+    border: 1px dotted green;
+    color: black;
+    background: white;
+  }
+
+#show_hide{
+   margin: 30px 5px;
+}
+</style>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script>
+$(document).ready(function(){
+    $('#decision').on('change', function() {
+             if(this.value == '2')
+             {
+                 $("#customized").show();
+             }
+             else
+             {
+               $("#customized").hide();
+             }
+    });
+});
+</script>
+    <style>
+        .btn-group input {
+  background-color: green;
+  border: 1px solid white;
+  color: white;
+  padding: 10px 24px;
+  cursor: pointer;
+  float: right;
+}
+    </style>
+</head>
+<body>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <script>
+      var messages = {{ messages | safe }};
+      for (var i=0; i<messages.length; i++) {
+        alert(messages[i]);
+      }
+    </script>
+  {% endif %}
+{% endwith %}
+{% block content %}{% endblock %}
+</body>
+</html>

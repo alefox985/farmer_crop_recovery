@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block content %}
+<title>Home farmer</title>
+<div class="btn-group">
+        <form action="/logout" method="POST">
+  <input type="submit" value="Logout">
+</form>
+<form action="/change_password">
+  <input type="submit" value="Change password">
+</form>
+<form action="/farmer_transaction_list">
+  <input type="submit" value="View transaction list">
+</form>
+    <form action="/about">
+  <input type="submit" value="About">
+</form>
+    </div>
+<h1>Farmer crop recovery</h1>
+<p><b>Blockchain address:</b> {{ public_key }}</p>
+<p><b>Current amount of token:</b> {{ amount }}</p>
+<h2>Enter daily information about your field below</h2>
+<form action="/home_farmer" method="POST">
+    <label for="id_input_temperature"><b>Temperature</b></label>
+    <input type="number" placeholder="Enter temperature in °C" name="temperature" id="id_input_temperature" required>
+
+    <label for="id_input_humidity"><b>Humidity</b></label>
+    <input type="number" placeholder="Enter humidity %" name="humidity" id="id_input_humidity" required>
+
+    <label for="id_input_rain"><b>Rain mm</b></label>
+    <input type="number" placeholder="Enter rain mm" name="rain" id="id_input_rain" required>
+
+    <input id="id_submit_home_farmer" type="submit" value="Submit" required>
+</form>
+<h2>Here the insertions of the last month</h2>
+<table class="tblcls">
+  <tr>
+      <th>Time</th>
+      <th>Temperature</th>
+      <th>Humidity</th>
+      <th>Rain mm</th>
+      <th>Elaborated for a transaction request</th>
+  </tr>
+    {% for data in field_list %}
+  <tr>
+      <td>{{ data.time }}</td>
+      <td>{{ data.temperature }}</td>
+      <td>{{ data.humidity }}</td>
+      <td>{{ data.rain_mm }}</td>
+      {% if data.tx_reg == True %}
+      <td>Yes</td>
+      {% elif data.tx_reg == False %}
+      <td>No</td>
+      {% endif%}
+  </tr>
+    {% endfor %}
+</table>
+{% endblock %}

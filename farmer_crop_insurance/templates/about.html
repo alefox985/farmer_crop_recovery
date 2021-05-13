@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+<title>About</title>
+<div class="btn-group">
+        <form action="/logout" method="POST">
+  <input type="submit" value="Logout">
+</form>
+<form action="/home_farmer">
+  <input type="submit" value="Home">
+</form>
+</div>
+<h1>Farmer crop recovery</h1>
+<h2>About this application</h2>
+Farmer crop recovery allows you to obtain a rewarding through Algorand blockchain after reaching ten days of drought or intense rain.
+<br><br>
+There are two types of drought and three types of intense rain conditions that are illustrated below:
+<br><br>
+<b>• Agricultural drought:</b> temperature higher than {{ user.temperature_threshold }} °C and humidity lower than {{ user.humidity_threshold }} % for ten consecutive days.
+Actual rewarding: {{ rewarding.agri_drought }} ALGO
+<br><br>
+<b>• Meteorological drought:</b> rain mm lower than {{ user.rain_lower }} for ten consecutive days.
+Actual rewarding: {{ rewarding.meteo_drought }} ALGO
+<br><br>
+<b>• Heavy rain:</b> rain mm mean of last ten days is higher than {{ user.rain_heavy }}.
+Actual rewarding: {{ rewarding.heavy_rain }} ALGO
+<br><br>
+<b>• Shower rain:</b> rain mm mean of last ten days is higher than {{ user.rain_shower }}.
+Actual rewarding: {{ rewarding.shower_rain }} ALGO
+<br><br>
+<b>• Storm rain:</b> rain mm mean of last ten days is higher than {{ user.rain_storm }}.
+Actual rewarding: {{ rewarding.storm_rain }} ALGO
+<br><br>
+Rewardings are updated basing on the <a href="https://coinmarketcap.com/currencies/algorand/">current ALGO/EUR rate</a>.
+{% endblock %}

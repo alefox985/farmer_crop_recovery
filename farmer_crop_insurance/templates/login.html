@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+<title>Welcome to login page</title>
+<script>
+$(#id_submit_login").ready(function () {
+
+  var flash_message = '{{get_flashed_messages()[0]}}'
+
+  if (flash_message === 'Login successful') {
+     Swal.fire({
+         title: 'Login successful',
+         text: 'Welcome back to Farmer crop recovery',
+         icon: 'success',
+         button: 'Ok'
+     })
+  }
+
+  if (flash_message === 'Login unsuccessful') {
+     Swal.fire({
+         title: 'Login unsuccessful',
+         text: 'Please check your username and password',
+         icon: 'error',
+         button: 'Ok'
+     })
+  }
+});
+</script>
+<h1>Welcome to farmer crop recovery</h1>
+<h2>Insert your credentials to login</h2>
+<form action="/login" method="POST">
+  <label for="username">Username</label><br>
+  <input type="text" id="username" name="username"><br>
+  <label for="password">Password</label><br>
+  <input type="password" id="password" name="password"><br><br>
+  <button type="submit" id="id_submit_login">Login</button>
+</form>
+{% endblock %}

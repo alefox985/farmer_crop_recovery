@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block content %}
+<title>Home</title>
+<div class="btn-group">
+    <form action="/logout" method="POST">
+  <input type="submit" value="Logout">
+</form>
+<form action="/change_password">
+  <input type="submit" value="Change password">
+</form>
+<form action="/view_transactions">
+  <input type="submit" value="View transaction list">
+</form>
+<form action="/register_location">
+  <input type="submit" value="Register farm location">
+</form>
+<form action="/register_farmer">
+  <input type="submit" value="Register farmer">
+</form>
+<form action="/token_amount">
+  <input type="submit" value="Define rewarding token amount">
+</form>
+</div>
+<h1>Farmer crop recovery</h1>
+<hr>
+<p><b>Blockchain address:</b> {{ public_key }}</p>
+<p><b>Current amount of token:</b> {{ amount }}</p>
+<hr>
+<p><b>How does this application work?</b></p>
+Farmer crop recovery allows farmers to obtain a rewarding through Algorand blockchain after reaching ten days of drought or intense rain.
+<br><br>
+There are two types of drought and three types of intense rain conditions that are illustrated below:
+<br><br>
+<b>• Agricultural drought:</b> temperature higher than a defined threshold and humidity lower than a defined threshold for ten consecutive days.
+Actual rewarding: {{ rewarding.agri_drought }} ALGO
+<br><br>
+<b>• Meteorological drought:</b> rain mm lower than a defined threshold for ten consecutive days.
+Actual rewarding: {{ rewarding.meteo_drought }} ALGO
+<br><br>
+<b>• Heavy rain:</b> rain mm mean of last ten days is higher than a defined threshold.
+Actual rewarding: {{ rewarding.heavy_rain }} ALGO
+<br><br>
+<b>• Shower rain:</b> rain mm mean of last ten days is higher than a defined threshold.
+Actual rewarding: {{ rewarding.shower_rain }} ALGO
+<br><br>
+<b>• Storm rain:</b> rain mm mean of last ten days is higher than a defined threshold.
+Actual rewarding: {{ rewarding.storm_rain }} ALGO
+<hr>
+<p><b>How should I proceed?</b></p>
+• Register farm locations
+<br><br>
+• Register farmers
+<br><br>
+• View transaction requests and decide either to accept or reject them
+<br><br>
+• You can update rewardings basing on the <a href="https://coinmarketcap.com/currencies/algorand/">current ALGO/EUR rate</a>.
+<hr>
+{% endblock %}

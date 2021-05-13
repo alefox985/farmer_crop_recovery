@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+{% block content %}
+<title>Register farmer</title>
+<div class="btn-group">
+  <form action="/logout" method="POST">
+  <input type="submit" value="Logout">
+</form>
+<form action="/home_admin">
+  <input type="submit" value="Home">
+</form>
+</div>
+<h1>Farmer crop recovery</h1>
+<form action="/register_farmer" method="POST">
+  <div class="container">
+    <h2>Register a new user</h2>
+    <p>Please fill in this form to create a new farmer account.</p>
+    <hr>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" id="email" required>
+
+    <br><br>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+    <br><br>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+
+    <br><br>
+
+    <label for="username"><b>Username</b></label>
+    <input type="text" placeholder="Enter username" name="username" id="username" required>
+
+    <br><br>
+
+    <label for="name"><b>Name</b></label>
+    <input type="text" placeholder="Enter name" name="name" id="name" required>
+
+    <br><br>
+
+    <label for="surname"><b>Surname</b></label>
+    <input type="text" placeholder="Enter surname" name="surname" id="surname" required>
+
+    <br><br>
+
+    <label for="phone_number"><b>Phone number</b></label>
+    <input type="text" placeholder="Enter phone number" name="phone_number" id="phone_number" required>
+
+    <br><br>
+
+    <label for="field_location"><b>Farm location</b></label>
+  <select name="field_location" id="field_location" required>
+    {% for farm in farm_list %}
+    <option value="{{ farm.name }}">{{ farm.name }}</option>
+    {% endfor %}
+  </select>
+
+    <br><br>
+
+    <label for="decision"><b>Thresholds</b></label>
+    <select name="decision" id="decision" required>
+    <option value="1">Use default farm thresholds</option>
+    <option value="2">Use customized thresholds</option>
+    </select>
+
+    <br><br>
+
+    <div style='display:none;' id="customized">
+      <label for="temp"><b>Temperature higher threshold</b></label>
+      <input type="number" step=0.01 placeholder="Enter temperature in °C" name="temp" id="temp">
+
+      <br><br>
+
+      <label for="hum"><b>Humidity lower threshold</b></label>
+      <input type="number" step=0.01 placeholder="Enter humidity %" name="hum" id="hum">
+
+      <br><br>
+
+      <label for="rain_lower"><b>Rain lower threshold</b></label>
+    <input type="number" step=0.01 placeholder="Enter rain mm" name="rain_lower" id="rain_lower">
+
+    <br><br>
+
+    <label for="rain_heavy"><b>Heavy rain threshold</b></label>
+    <input type="number" step=0.01 placeholder="Enter rain mm" name="rain_heavy" id="rain_heavy">
+
+    <br><br>
+
+    <label for="rain_shower"><b>Rain shower threshold</b></label>
+    <input type="number" step=0.01 placeholder="Enter rain mm" name="rain_shower" id="rain_shower">
+
+    <br><br>
+
+    <label for="rain_storm"><b>Rain storm threshold</b></label>
+    <input type="number" step=0.01 placeholder="Enter rain mm" name="rain_storm" id="rain_storm">
+
+    </div>
+
+    <hr>
+
+    <button type="submit" class="registerbtn">Register</button>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block content %}
+<title>Register location</title>
+<div class="btn-group">
+    <form action="/logout" method="POST">
+  <input type="submit" value="Logout">
+</form>
+<form action="/home_admin">
+  <input type="submit" value="Home">
+</form>
+</div>
+<h1>Farmer crop recovery</h1>
+<form action="/register_location" method="POST">
+  <div class="container">
+    <h2>Register a new farm location</h2>
+    <p>Please fill in this form with farm information and thresholds to obtain the recovery fund.</p>
+    <hr>
+
+    <label for="name"><b>Location name</b></label>
+    <input type="text" placeholder="Enter location name" name="name" id="name" required>
+
+    <br><br>
+
+    <label for="gcs"><b>Geographic coordinates</b></label>
+    <input type="text" placeholder="Latitude and longitude" name="gcs" id="gcs" required>
+
+    <br><br>
+
+    <label for="temp"><b>Temperature higher threshold</b></label>
+    <input type="number" step=0.01 placeholder="Enter temperature in °C" name="temp" id="temp" required>
+
+    <br><br>
+
+    <label for="hum"><b>Humidity lower threshold</b></label>
+    <input type="number" step=0.01 placeholder="Enter humidity %" name="hum" id="hum" required>
+
+    <br><br>
+
+    <label for="rain_lower"><b>Rain lower threshold</b></label>
+    <input type="number" step=0.01 placeholder="Enter rain mm" name="rain_lower" id="rain_lower" required>
+
+    <br><br>
+
+    <label for="rain_heavy"><b>Heavy rain threshold</b></label>
+    <input type="number" step=0.01 placeholder="Enter rain mm" name="rain_heavy" id="rain_heavy" required>
+
+    <br><br>
+
+    <label for="rain_shower"><b>Rain shower threshold</b></label>
+    <input type="number" step=0.01 placeholder="Enter rain mm" name="rain_shower" id="rain_shower" required>
+
+    <br><br>
+
+    <label for="rain_storm"><b>Rain storm threshold</b></label>
+    <input type="number" step=0.01 placeholder="Enter rain mm" name="rain_storm" id="rain_storm" required>
+
+    <hr>
+
+    <button type="submit" class="registerbtn">Register</button>
+  </div>
+</form>
+{% endblock %}
