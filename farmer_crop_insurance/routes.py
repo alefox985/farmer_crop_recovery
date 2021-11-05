@@ -14,7 +14,7 @@ def reset_db():
     db.drop_all()
     db.create_all()
     sk, pk = account.generate_account()
-    user_admin = User(username='lavazza', password=bcrypt.generate_password_hash('coffee').decode('utf-8'), role='admin', private_key=sk, address=pk)
+    user_admin = User(username='admin', password=bcrypt.generate_password_hash('coffee').decode('utf-8'), role='admin', private_key=sk, address=pk)
     new_token = TokenAmount(agri_drought=10, meteo_drought=10, heavy_rain=10, shower_rain=15, storm_rain=20)
     db.session.add(user_admin)
     db.session.add(new_token)
@@ -288,7 +288,7 @@ def execute_transaction(receiver_pk, amount):
     last_valid_round = params.last
     fee = params.min_fee
     send_amount = amount
-    sender = User.query.filter_by(username='lavazza').first()
+    sender = User.query.filter_by(username='admin').first()
     sender_pk = sender.address
     sender_sk = sender.private_key
     sender_account = sender_pk
